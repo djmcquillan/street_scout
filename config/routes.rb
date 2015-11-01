@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'pages#home'
+
+  get 'pages/about'
+
+  get 'videos/' => 'videos#index'
+
+  get 'videos/show'
+
   get 'users/' => 'users#index'
 
   get 'users/show'
