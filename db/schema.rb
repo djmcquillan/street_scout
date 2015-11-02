@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20151102052026) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "url"
-    t.integer  "user_id_id"
+    t.integer  "user_id"
   end
 
-  add_index "videos", ["user_id_id"], name: "index_videos_on_user_id_id"
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
 
 end
