@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'videos/' => 'videos#index'
 
-  get 'videos/show'
+  get 'videos/:id' => 'videos#show' 
 
   get 'users/' => 'users#index'
 
