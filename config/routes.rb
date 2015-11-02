@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root 'pages#home'
 
   get 'pages/about'
@@ -8,6 +10,12 @@ Rails.application.routes.draw do
   get 'videos/:id' => 'videos#show' 
 
   get 'signup' => 'users#new'
+
+  get    'login'   => 'sessions#new'
+
+  post   'login'   => 'sessions#create'
+  
+  delete 'logout'  => 'sessions#destroy'
 
   resources :users
 
