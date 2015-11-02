@@ -4,6 +4,9 @@
 <%=@users.each do |u| %>
 <%="Name:" + " " + u.name%><br>
 <%="Email:" + " " + u.email%><br>
-<%="Videos:"  %><br><br>
+<%="Videos:"  %><br>
+<%= link_to 'Show', u %>
+<%= link_to 'Edit', edit_user_path(u) %>
+<%= link_to 'Destroy', u, method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
 <%end%>
 </div>
