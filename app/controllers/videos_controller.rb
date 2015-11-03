@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  # before_filter :authorize, only: [:edit, :update]
+
   def index
   	@videos = Video.all
   end
@@ -13,12 +15,17 @@ class VideosController < ApplicationController
 
   def create
   	@video = Video.new(video_params)
+    @video.user_id = current_user.id
   	if @video.save
       flash[:success] = "Video has been uploaded"
   		redirect_to videos_path
   	else
   		render 'new'
   	end
+
+    def date_published
+      created_at.localtime.strftime("%A, %B, %-d, %Y at %l:%M %p")
+    end
   end
 
 private

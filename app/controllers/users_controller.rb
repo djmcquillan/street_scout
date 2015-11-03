@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_filter :authorize, only: [:edit, :update]
   def index
   	@users = User.all
   end
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
       log_in @user
-      flash[:success] = "You have successfully logged in"
+      flash[:success] = "You have successfully Signed Up"
   		redirect_to @user
   	else
   		render 'new'
@@ -23,15 +24,22 @@ class UsersController < ApplicationController
   end
 
   def update
-      if @user.update(user_params)
-         redirect_to @user, notice: 'User was successfully updated.'
+      @user = User.find(params[:id])
+      if @user.update_attributes(user_params)
+        flash[:success] = "Profile updated"
+         redirect_to @user
       else
         render :edit
       end
   end
+
+   # def logged_in_user
+   #    unless logged_in?
+   #      flash[:danger] = "Please log in."
+   #      redirect_to login_url
+   #    end
+   #  end
  
-
-
  private
   def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
