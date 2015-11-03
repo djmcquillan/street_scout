@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+ 
 
   root 'pages#home'
 
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'videos/:id' => 'videos#show' 
 
   get 'signup' => 'users#new'
+
+  get 'sessions/new'
 
   get    'login'   => 'sessions#new'
 

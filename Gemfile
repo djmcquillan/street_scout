@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 #Use for media upload
 gem 'carrierwave'
 
+gem 'bootstrap-sass', '~> 3.3.5'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
