@@ -14,8 +14,8 @@
 	<%="Title:" + " " + v.title %><br>
 	<%="Description:" + " " + v.description%><br>
 	<%= upload_video v.url %><br>
-	<%= link_to 'Edit', edit_video_path %>
-	<%= link_to 'Delete', user_path, method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
+	<%= link_to 'Edit', edit_video_path(v) %>
+	<%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
 	<%end%>
 </div>
 
