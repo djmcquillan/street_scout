@@ -3,17 +3,19 @@
 <div>
 <%="Name:" + " " + @user.name%><br>
 <%="Email:" + " " + @user.email%><br>
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Edit', edit_user_path %>
 <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <%= link_to "Upload Video", new_video_path %><br><br>
 </div>
 
 <div>
-	<h2><%=current_user.name%>'s Uploaded Videos</h2>
+	<h2>My Videos</h2>
 	<%=current_user.videos.each do |v| %>
 	<%="Title:" + " " + v.title %><br>
 	<%="Description:" + " " + v.description%><br>
-	<%= upload_video v.url %><br><br>
+	<%= upload_video v.url %><br>
+	<%= link_to 'Edit', edit_video_path %>
+	<%= link_to 'Delete', user_path, method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
 	<%end%>
 </div>
 

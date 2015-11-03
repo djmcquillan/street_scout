@@ -22,11 +22,31 @@ class VideosController < ApplicationController
   	else
   		render 'new'
   	end
-
-    def date_published
-      created_at.localtime.strftime("%A, %B, %-d, %Y at %l:%M %p")
-    end
   end
+
+  def edit
+    @video = Video.find(params[:id])
+  end
+
+
+  def update
+      @video = Video.find(params[:id])
+      if @video.update_attributes(video_params)
+        flash[:success] = "Video updated"
+        redirect_to videos_path
+      else
+        render 'edit'
+      end
+  end
+
+
+  def destroy
+      Video.find(params[:id]).destroy
+      redirect_to '#'
+  end
+    # def date_published
+    #   created_at.localtime.strftime("%A, %B, %-d, %Y at %l:%M %p")
+    # end
 
 private
 def video_params
