@@ -2,10 +2,11 @@
 
 <div>
 <%=@videos.each do |v| %>
-<!-- <%#="Title:" + " " + v.title %><br>  -->
-<!-- <%#="Description:" + " " + v.description%><br> -->
-<%= video_tag("v.video") %><br><br>
+<%="Title:" + " " + v.title %><br>
+<%="Description:" + " " + v.description%><br>
+<%= upload_video v.url %><br><br>
 <%end%>
+
 
 
 </div>

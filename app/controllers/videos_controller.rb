@@ -14,7 +14,6 @@ class VideosController < ApplicationController
   def create
   	@video = Video.new(video_params)
   	if @video.save
-      
       flash[:success] = "Video has been uploaded"
   		redirect_to videos_path
   	else
@@ -24,6 +23,6 @@ class VideosController < ApplicationController
 
 private
 def video_params
-      params.require(:video).permit(:title, :description, :video, :remote_video_url)
+      params.require(:video).permit(:title, :description, :url, :remote_video_url)
   end
 end
