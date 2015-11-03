@@ -4,6 +4,7 @@
 <%="Name:" + " " + @user.name%><br>
 <%="Email:" + " " + @user.email%><br>
 <%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
+<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+<%= link_to "Upload Video", new_video_path %><br><br>
 </div>
 

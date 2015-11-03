@@ -5,6 +5,7 @@
       <%= f.text_field :description, placeholder: 'Description', class: 'form-control'%><br>
       <%= f.label :url, "Paste Video URL here!"%>
       <%= f.text_field :url %><br>
+      <% @current_user :user_id %>
       <%= f.submit "Upload Video", class: "btn btn-primary" %>
     <% end %>
   </div>
