@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
  
-
   root 'pages#home'
-
-  get 'pages/about'
-
-  get 'videos/' => 'videos#index'
-
-  get 'videos/:id' => 'videos#show' 
 
   get 'signup' => 'users#new'
 
@@ -20,6 +13,8 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :users
+
+  resources :videos
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

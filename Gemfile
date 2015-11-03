@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 #Use for media upload
 gem 'carrierwave'
+gem 'carrierwave-video'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 

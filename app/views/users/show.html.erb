@@ -3,7 +3,6 @@
 <div>
 <%="Name:" + " " + @user.name%><br>
 <%="Email:" + " " + @user.email%><br>
-<%="Videos:"  %><br>
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %><br><br>
 </div>
