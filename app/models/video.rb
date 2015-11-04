@@ -10,6 +10,7 @@ class Video < ActiveRecord::Base
 
 
 	def self.sorted_by_votes
+		#&: is shortcut for {|video| video.score}
 	  Video.all.sort_by(&:score).reverse
 	end
 

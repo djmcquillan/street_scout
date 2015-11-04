@@ -1,7 +1,7 @@
 <h1>Videos</h1>
 
-<div>
-
+<div class="container">
+<div class="video"
 <%=@videos.each do |v| %>
 	<%="Title:" + " " + v.title %><br>
 	<%="Description:" + " " + v.description%><br>
@@ -11,8 +11,6 @@
 	Score: <%=v.score%><br>
 	<%= upload_video v.url %><br><br>
 <%end%>
-
-
-
+</div>
 </div>
 
