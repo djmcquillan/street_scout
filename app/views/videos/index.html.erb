@@ -1,8 +1,6 @@
 <h1>Videos</h1>
-
 <div class="container">
-<div class="video"
-<%=@videos.each do |v| %>
+	<%=@videos.each do |v| %>
 	<%="Title:" + " " + v.title %><br>
 	<%="Description:" + " " + v.description%><br>
 	<%="Uploaded by:" + " " + v.user.name%><br>
@@ -12,5 +10,5 @@
 	<%= upload_video v.url %><br><br>
 <%end%>
 </div>
-</div>
+
 
