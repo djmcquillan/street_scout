@@ -2,7 +2,7 @@ class VideosController < ApplicationController
   # before_filter :authorize, only: [:edit, :update]
 
   def index
-  	@videos = Video.all
+  	@videos = Video.sorted_by_votes
   end
 
   def show
@@ -18,7 +18,7 @@ class VideosController < ApplicationController
     @video.user_id = current_user.id
   	if @video.save
       flash[:success] = "Video has been uploaded"
-  		redirect_to videos_path
+  		redirect_to current_user
   	else
   		render 'new'
   	end
@@ -33,7 +33,7 @@ class VideosController < ApplicationController
       @video = Video.find(params[:id])
       if @video.update_attributes(video_params)
         flash[:success] = "Video updated"
-        redirect_to videos_path
+        redirect_to current_user
       else
         render 'edit'
       end
@@ -47,6 +47,20 @@ class VideosController < ApplicationController
     # def date_published
     #   created_at.localtime.strftime("%A, %B, %-d, %Y at %l:%M %p")
     # end
+
+#allow user to upvote on videos  in gallery
+  def upvote
+    @video = Video.find(params[:id])
+    @video.upvote_by current_user
+    redirect_to videos_path
+  end
+
+  #allow user to downvote on videos  in gallery
+  def downvote
+    @video = Video.find(params[:id])
+    @video.downvote_by current_user
+    redirect_to videos_path
+  end
 
 private
 def video_params

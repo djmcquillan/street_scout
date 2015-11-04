@@ -32,6 +32,8 @@ gem 'carrierwave-video'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
+gem 'acts_as_votable'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

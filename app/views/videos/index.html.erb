@@ -1,10 +1,15 @@
 <h1>Videos</h1>
 
 <div>
+
 <%=@videos.each do |v| %>
-<%="Title:" + " " + v.title %><br>
-<%="Description:" + " " + v.description%><br>
-<%= upload_video v.url %><br><br>
+	<%="Title:" + " " + v.title %><br>
+	<%="Description:" + " " + v.description%><br>
+	<%="Uploaded by:" + " " + v.user.name%><br>
+	<%=link_to "Upvote", like_video_path(v), method: :put%>
+	<%=link_to "Downvote", dislike_video_path(v), method: :put%>
+	Score: <%=v.score%><br>
+	<%= upload_video v.url %><br><br>
 <%end%>
 
 
