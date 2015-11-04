@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'logout'  => 'sessions#destroy'
 
-  resources :users 
+  resources :users
 
   resources :videos do
     member do
