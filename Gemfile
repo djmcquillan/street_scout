@@ -34,6 +34,10 @@ gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'acts_as_votable'
 
+gem 'httparty'
+
+gem 'httmultiparty'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
