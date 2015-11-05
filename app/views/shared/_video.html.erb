@@ -1,26 +1,10 @@
-<iframe width="450" height="250" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
-
-<!-- <div class="embed-responsive embed-responsive-4by3" allowfullscreen>
+<!-- <iframe width="800" height="400" src="<%= url %>" frameborder="0" allowfullscreen></iframe> -->
+<!-- 16:9 aspect ratio -->
+<!-- <div class="embed-responsive embed-responsive-16by9" llowfullscreen>
   <iframe class="embed-responsive-item" src="<%= url %>"></iframe>
 </div> -->
 
-<!-- SampleVideo_1080x720_2mb.mp4
-
-curl -X POST -F filedata=@drop.avi  https://api.vid.me/video/upload
-curl -d "video=1234" https://api.vid.me/video/1/comments
-https://vid.me/b4fJ -->
-
-
-<!-- HTTMultiParty.post('https://api.vid.me/video/upload', :query => {'filedata'=> '/Users/danmcquillan/Desktop/workspace/projects/project_2/street_scout/Fighter.mpg'})
-
-HTTParty.post('https://api.vid.me/video/upload', :query => {'filedata'=> '/Users/danmcquillan/Desktop/workspace/projects/project_2/street_scout/Fighter.mpg'})
-
-curl -X POST -F "filedata=@Fighter.mpg" https://api.vid.me/video/upload
-
-Fighter.mpg
-
-response = HTTMultiParty.post('https://api.vid.me/video/upload', :body => {:somefile => File.new('Fighter.mpg')})
-
-uri = https://api.vid.me.parse("https://api.vid.me/video/upload")
-file = "/Users/danmcquillan/Desktop/workspace/projects/project_2/street_scout/Fighter.mpg"
-
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3" allowfullscreen>
+  <iframe class="embed-responsive-item" src="<%= url %>></iframe>
+</div>
