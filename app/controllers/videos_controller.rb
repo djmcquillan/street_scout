@@ -1,12 +1,13 @@
 class VideosController < ApplicationController
   # before_filter :authorize, only: [:edit, :update]
+  # require vidme.rb
 
   def index
   	@videos = Video.sorted_by_votes
   end
 
   def show
-	@video = Video.find(params[:id])  
+	  @video = Video.find(params[:id])  
   end
 
   def new
@@ -16,9 +17,8 @@ class VideosController < ApplicationController
   def create
   	@video = Video.new(video_params)
     @video.user_id = current_user.id
-
-    
-
+    # @video.filedata = @video.
+    # response = Vidme.save(@video.filedata)
   	if @video.save
       flash[:success] = "Video has been uploaded"
   		redirect_to current_user
@@ -26,6 +26,7 @@ class VideosController < ApplicationController
   		render 'new'
   	end
   end
+
 
   def edit
     @video = Video.find(params[:id])
@@ -41,6 +42,7 @@ class VideosController < ApplicationController
         render 'edit'
       end
   end
+
 
 
   def destroy
@@ -67,6 +69,6 @@ class VideosController < ApplicationController
 
 private
 def video_params
-      params.require(:video).permit(:title, :description, :url, :remote_video_url)
+      params.require(:video).permit(:title, :description, :url, :remote_video_url) #,:filedata 
   end
 end

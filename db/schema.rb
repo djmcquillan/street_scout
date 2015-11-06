@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103223944) do
+ActiveRecord::Schema.define(version: 20151106031204) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20151103223944) do
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"
+
+  create_table "vidmes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
