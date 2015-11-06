@@ -2,6 +2,18 @@
     padding-top: 70px;
   }
 
+  .jumbotron{
+  	text-align: center !important;
+  	background-image: url("https://taniakuhl.files.wordpress.com/2011/01/18.jpg");
+  	background-repeat: no-repeat;
+  	background-size:cover;
+  	color: white !important;
+  }
+
+  .jumbotron p {
+  	font-style:bold !important;
+  }
+
 .video-container {
 	position:relative;
 	padding-bottom:56.25%;

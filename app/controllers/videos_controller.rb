@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   # before_filter :authorize, only: [:edit, :update]
-  # require vidme.rb
+ 
 
   def index
   	@videos = Video.sorted_by_votes
