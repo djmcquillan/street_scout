@@ -2,16 +2,23 @@
 <head>
 	<title>Uploader</title>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
 </head>
 <body>
 
+<%= form_for(:video, url: "https://api.vid.me/video/upload") do |f| %>
+	<%= f.label :video %>
+	<%= f.file_field %>
 
-<form enctype="multipart/form-data">
+	<%= f.submit %>
+
+<% end %>
+
+
+<!-- <form enctype="multipart/form-data" method="POST" data-remote="true" >
 	<input type="file" name="filedata" id="video">
-	<!-- <input type="text" name="dude"> -->
+	<input type="text" name="dude">
 	<input type="submit">
-</form>
+</form> -->
 
 <script type="text/javascript">
 var videoInput = document.getElementById('video');
@@ -19,16 +26,20 @@ var myForm = $('form');
 
 myForm.on('submit', function(){
 	// var myFormData = new FormData();
-	// myForm.append('filedata', videoInput.files[0]);
+	myForm.append('video', videoInput.files[0]);
 	// evt.preventDefault();
 	console.log(myForm.has('video'));
+	console.log(videoInput.files[0]);
 
 	$.ajax({
 	  url: 'https://api.vid.me/video/upload',
 	  type: 'POST',
-	  // processData: false, // important
-	  // dataType : 'json',
-	  data: videoInput.files[0]
+	  processData: false,
+	  contentType: false, // important
+	  // dataType : 'html',
+	  data: videoInput.files[0],
+	 success: function () {
+    console.log("Local success callback.")}
 	});
 })
 
