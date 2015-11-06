@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   # before_filter :authorize, only: [:edit, :update]
-  # require vidme.rb
+  require 'vidme.rb'
 
   def index
   	@videos = Video.sorted_by_votes
@@ -17,8 +17,7 @@ class VideosController < ApplicationController
   def create
   	@video = Video.new(video_params)
     @video.user_id = current_user.id
-    # @video.filedata = @video.
-    # response = Vidme.save(@video.filedata)
+    response = Vidme.store(video_params[:filedata])
   	if @video.save
       flash[:success] = "Video has been uploaded"
   		redirect_to current_user
@@ -69,6 +68,6 @@ class VideosController < ApplicationController
 
 private
 def video_params
-      params.require(:video).permit(:title, :description, :url, :remote_video_url) #,:filedata 
+      params.require(:video).permit(:title, :description, :url, :remote_video_url, :filedata) 
   end
 end

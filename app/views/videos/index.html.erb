@@ -13,7 +13,7 @@
     <%=link_to "Upvote", like_video_path(v), method: :put%>
 	<%=link_to "Downvote", dislike_video_path(v), method: :put%>
 	Score: <%=v.score%><br>
-	<%= upload_video v.url %>
+	<%= v.filedata %> 
 	<%else%>
 	<%="Uploaded by:" + " " + v.user.name%><br>
     <%="Description:" + " " + v.description%><br>

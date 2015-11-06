@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106031204) do
+ActiveRecord::Schema.define(version: 20151106054123) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151106031204) do
     t.text     "url"
     t.integer  "user_id"
     t.string   "video"
+    t.string   "filedata"
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"
