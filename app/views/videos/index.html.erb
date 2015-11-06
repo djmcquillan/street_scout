@@ -7,13 +7,21 @@
     <h3 class="panel-title"><%="Title:" + " " + v.title %></h3>
   </div>
   <div class="panel-body" style="max-width: 600; max-height:400;">
+  	<% if logged_in? %>
   	<%="Uploaded by:" + " " + v.user.name%><br>
     <%="Description:" + " " + v.description%><br>
     <%=link_to "Upvote", like_video_path(v), method: :put%>
 	<%=link_to "Downvote", dislike_video_path(v), method: :put%>
 	Score: <%=v.score%><br>
-	<%= upload_video v.url %><br><br>
-  </div>
+	<%= upload_video v.url %>
+	<%else%>
+	<%="Uploaded by:" + " " + v.user.name%><br>
+    <%="Description:" + " " + v.description%><br>
+    <%= link_to "Must Be Logged In to Vote!", login_path%>
+	Score: <%=v.score%><br>
+	<%= upload_video v.url %>
+	<%end%>
+  </div> 
 </div>
 <%end%>
 </div>

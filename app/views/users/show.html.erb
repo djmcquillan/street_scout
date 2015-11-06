@@ -1,12 +1,8 @@
-<h1><%=@user.name%></h1>
-<div class='container'>
-<a href="http://localhost:3000/videos/new" class="btn btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload New Video</a>
-<%#= link_to "Upload Video", new_video_path %>
-</div>
-
+<h2>Videos Uploaded by<br> <%=@user.name%></h2>
+<!-- <a href="http://localhost:3000/videos/new" class="btn btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Upload New Video</a> -->
+<%#= link_to "Upload Video", new_video_path %> 
 
 <div class="video-container">
-<h2>My Videos</h2>
 <%=current_user.videos.each do |v| %>
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -17,7 +13,7 @@
     <%= link_to 'Edit', edit_video_path(v) %>
 	<%= link_to 'Delete', v, method: :delete, data: { confirm: 'Are you sure?' } %>
 	Score: <%=v.score%><br>
-	<%= upload_video v.url %><br><br>
+	<%= upload_video v.url %>
   </div>
 </div>
 <%end%>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :users
+  resources :users, :except => [:index]
 
   resources :videos do
     member do
