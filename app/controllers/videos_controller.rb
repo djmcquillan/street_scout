@@ -17,8 +17,6 @@ class VideosController < ApplicationController
   def create
   	@video = Video.new(video_params)
     @video.user_id = current_user.id
-    # @video.filedata = @video.
-    # response = Vidme.save(@video.filedata)
   	if @video.save
       flash[:success] = "Video has been uploaded"
   		redirect_to current_user
