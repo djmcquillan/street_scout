@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Uploader</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+</head>
+<body>
+
+
+<form enctype="multipart/form-data">
+	<input type="file" name="filedata" id="video">
+	<!-- <input type="text" name="dude"> -->
+	<input type="submit">
+</form>
+
+<script type="text/javascript">
+var videoInput = document.getElementById('video');
+var myForm = $('form');
+
+myForm.on('submit', function(){
+	// var myFormData = new FormData();
+	// myForm.append('filedata', videoInput.files[0]);
+	// evt.preventDefault();
+	console.log(myForm.has('video'));
+
+	$.ajax({
+	  url: 'https://api.vid.me/video/upload',
+	  type: 'POST',
+	  // processData: false, // important
+	  // dataType : 'json',
+	  data: videoInput.files[0]
+	});
+})
+
+
+</script>
+</body>
+</html>

@@ -38,6 +38,8 @@ gem 'httparty'
 
 gem 'httmultiparty'
 
+gem 'blueimp-file-upload-rails', '~> 8.6', '>= 8.6.1.1'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

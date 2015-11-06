@@ -1,13 +1,20 @@
 <h1>Videos</h1>
-<div class="container">
-	<%=@videos.each do |v| %>
-	<%="Title:" + " " + v.title %><br>
-	<%="Description:" + " " + v.description%><br>
-	<%="Uploaded by:" + " " + v.user.name%><br>
-	<%=link_to "Upvote", like_video_path(v), method: :put%>
+
+<div class="video-container">
+<%= @videos.each do |v| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%="Title:" + " " + v.title %></h3>
+  </div>
+  <div class="panel-body" style="max-width: 600; max-height:400;">
+  	<%="Uploaded by:" + " " + v.user.name%><br>
+    <%="Description:" + " " + v.description%><br>
+    <%=link_to "Upvote", like_video_path(v), method: :put%>
 	<%=link_to "Downvote", dislike_video_path(v), method: :put%>
 	Score: <%=v.score%><br>
 	<%= upload_video v.url %><br><br>
+  </div>
+</div>
 <%end%>
 </div>
 
