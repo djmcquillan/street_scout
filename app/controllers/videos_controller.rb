@@ -15,16 +15,17 @@ class VideosController < ApplicationController
   end
 
   def create
+    arg = Video.new(video_params)
     HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(arg)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
-  	puts("video posted to vidme website")
-    @video = Video.new(video_params)
-    @video.user_id = current_user.id
-  	if @video.save
-      flash[:success] = "Video has been uploaded"
-  		redirect_to current_user
-  	else
-  		render 'new'
-  	end
+    puts("video posted to vidme website")
+   #  @video = Video.new(video_params)
+   #  @video.user_id = current_user.id
+  	# if @video.save
+   #    flash[:success] = "Video has been uploaded"
+  	# 	redirect_to current_user
+  	# else
+  	# 	render 'new'
+  	# end
   end
 
 
