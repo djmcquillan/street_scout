@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   get 'logout'  => 'sessions#destroy'
 
+  get 'upload' => 'videos#upload'
+
 
 
   resources :users, :except => [:index]

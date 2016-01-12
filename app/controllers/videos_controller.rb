@@ -1,3 +1,4 @@
+
 class VideosController < ApplicationController
   # before_filter :authorize, only: [:edit, :update]
  
@@ -15,17 +16,25 @@ class VideosController < ApplicationController
   end
 
   def create
-    arg = Video.new(video_params)
-    HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(arg)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
-    puts("video posted to vidme website")
-   #  @video = Video.new(video_params)
-   #  @video.user_id = current_user.id
-  	# if @video.save
-   #    flash[:success] = "Video has been uploaded"
-  	# 	redirect_to current_user
-  	# else
-  	# 	render 'new'
-  	# end
+      require 'json'
+      # print(params['video']['filedate'])
+      # videoFile = video_params["filedata"]
+      @response = HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(hardcode a video)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
+      @response.to_hash.to_json
+      videoData = JSON.parse(@response)
+      print("video data:", videoData)
+      print("video data=========:")
+      puts videoData['video']['embed_url']
+      @embedURL = videoData['video']['embed_url']
+    @video = Video.new(video_params)
+    @video.url = @embedURL
+    @video.user_id = current_user.id
+  	if @video.save
+      flash[:success] = "Video has been uploaded"
+  		redirect_to current_user
+  	else
+  		render 'new'
+  	end
   end
 
 
@@ -70,6 +79,6 @@ class VideosController < ApplicationController
 
 private
 def video_params
-      params.require(:video).permit(:title, :description, :url, :remote_video_url) #,:filedata 
+      params.require(:video).permit(:title, :description, :url, :remote_video_url, :filedata)
   end
 end
