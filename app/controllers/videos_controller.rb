@@ -17,14 +17,16 @@ class VideosController < ApplicationController
 
   def create
       require 'json'
-      print(params['video']['filedate'])
+      # print(params['video']['filedate'])
       videoFile = video_params["filedata"]
-      @response = HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(videoFile)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
+      filename = videoFile.original_filename
+      # print("filename=========",videoFile.original_filename)
+      # print("videoFile=====", videoFile)      
+      @response = HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(filename)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
       @response.to_hash.to_json
       videoData = JSON.parse(@response)
-      print("video data:", videoData)
-      print("video data=========:")
-      puts videoData['video']['embed_url']
+      # print("video data:=========", videoData)      
+      # puts videoData['video']['embed_url']
       @embedURL = videoData['video']['embed_url']
     @video = Video.new(video_params)
     @video.url = @embedURL
