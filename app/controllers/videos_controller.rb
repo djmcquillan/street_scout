@@ -20,9 +20,10 @@ class VideosController < ApplicationController
       # print(params['video']['filedate'])
       videoFile = video_params["filedata"]
       filename = videoFile.original_filename
-      # print("filename=========",videoFile.original_filename)
+      videoPath = videoFile.tempfile
+      print("filename=========",videoPath)
       # print("videoFile=====", videoFile)      
-      @response = HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(filename)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
+      @response = HTTMultiParty.post('https://api.vid.me/video/upload', :query => {:filedata => File.new(videoPath)}, :headers => { 'Content-Type' => 'video/x-msvideo'}, :detect_mime_type => true)
       @response.to_hash.to_json
       videoData = JSON.parse(@response)
       # print("video data:=========", videoData)      
